@@ -1,7 +1,7 @@
 ```dql
 To serve a Laravel application with Docker, ensure you change the DB_HOST value in your .env file from 127.0.0.1 to mysql.
 ```
-Docker Command
+**Docker Command**
 
 Build the Docker images:
 ```scss
@@ -27,6 +27,11 @@ To access the app container and open a bash shell within it, use the following c
 ```scss
 docker compose exec 'container name' bash
 ```
+
+Docker Compose Help Command
+```scss
+docker compose --help
+```
 Once inside the app container, run the following commands:
 Run the database migrations:
 ```scss
@@ -35,4 +40,9 @@ php artisan migrate
 Create the symbolic link for storage:
 ```scss
 php artisan storage:link
+```
+**Laravel Test**
+
+```scss
+php artisan test
 ```

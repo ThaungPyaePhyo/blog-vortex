@@ -11,5 +11,10 @@ trait Helper
         Log::error("Error: {$message} in {$file} on line {$line}");
     }
 
+    public function getUser()
+    {
+        return auth()->user();
+    }
+
 }
 

@@ -5,12 +5,13 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Services\Helper;
 use App\Services\PostService;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-
+    use Helper;
     public function __construct(protected PostService $service){
 
     }
@@ -22,7 +23,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = $this->service->getQuery()->paginate(9);
-        $user = $this->service->getUser();
+        $user = $this->getUser();
         return view('user.posts.index',compact('posts','user'));
     }
 

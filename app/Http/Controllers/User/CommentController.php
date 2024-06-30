@@ -3,24 +3,23 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
+use App\Http\Requests\CommentRequest;
 use App\Models\Post;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Services\CommentService;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Post $post)
+    public function __construct(protected CommentService $service)
     {
-        $request->validate([
-            'comment' => 'required|string|max:1000',
-        ]);
-        $comment = new Comment();
-        $comment->comment = $request->comment;
-        $comment->user_id = Auth::id();
-        $comment->post_id = $post->id;
-        $comment->save();
 
-        return back()->with('message', 'Comment added successfully!');
+    }
+    public function store(CommentRequest $request, Post $post)
+    {
+        $response = $this->service->create($request,$post);
+
+        if ($response) {
+            return redirect()->route('posts.index')->with('success', 'Comment created successfully.');
+        }
+        return back()->with('error', 'Something went wrong.');
     }
 }

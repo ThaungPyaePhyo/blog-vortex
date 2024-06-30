@@ -8,7 +8,7 @@
     <link rel="icon" href="{{ asset('build/assets/blogger.png') }}" type="image/png">
 </head>
 <body>
-        @include('layouts.navigation')
+        @include('user.layouts.navigation')
    <main>
        {{ $slot }}
    </main>

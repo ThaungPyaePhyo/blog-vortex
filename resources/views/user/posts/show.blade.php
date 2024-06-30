@@ -44,7 +44,7 @@
                         <form id="comment-form" action="{{ route('posts.comments.store', $post) }}" method="POST" class="mt-4" style="display: none;">
                             @csrf
                             <div class="mb-4">
-                                <textarea name="content" rows="3" class="w-full border border-gray-300 rounded-lg p-2" placeholder="Add a comment..."></textarea>
+                                <textarea name="comment" rows="3" class="w-full border border-gray-300 rounded-lg p-2" placeholder="Add a comment..."></textarea>
                                 @error('content')
                                 <span class="text-red-600 text-sm">{{ $message }}</span>
                                 @enderror
