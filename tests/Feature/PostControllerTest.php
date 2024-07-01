@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -20,7 +19,6 @@ class PostControllerTest extends TestCase
     {
         parent::setUp();
 
-        // Create a user to act as the authenticated user
         $this->user = User::factory()->create();
         $this->actingAs($this->user);
     }
@@ -110,7 +108,6 @@ class PostControllerTest extends TestCase
         $updatedData = [
             'title' => 'Updated Title',
             'body' => 'Updated body text.',
-            // Add other fields as necessary
         ];
 
         $response = $this->put(route('posts.update', $post), $updatedData);
