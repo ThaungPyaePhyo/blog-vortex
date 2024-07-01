@@ -1,7 +1,7 @@
 ```dql
 To serve a Laravel application with Docker, ensure you change the DB_HOST value in your .env file from 127.0.0.1 to mysql.
 ```
-**Docker Command**
+### Docker Command
 
 Build the Docker images:
 ```scss
@@ -41,8 +41,22 @@ Create the symbolic link for storage:
 ```scss
 php artisan storage:link
 ```
-**Laravel Test**
+### For Laravel Test
 
 ```scss
 php artisan test
 ```
+
+### Running Tests
+
+To run tests using `php artisan test`, you need to set up a test database. Follow these steps:
+
+1. **Create a Test Database**: Ensure you have a database specifically for testing purposes.
+2. **Configure the Test Database in `phpunit.xml`**: Open the `phpunit.xml` file in the root of your project. Update the `DB_DATABASE` environment variable with the name of your test database.
+
+```xml
+<php>
+    <env name="DB_DATABASE" value="test_database"/>
+    <!-- Other environment variables -->
+</php>
+
